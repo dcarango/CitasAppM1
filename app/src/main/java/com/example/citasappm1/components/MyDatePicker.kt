@@ -23,7 +23,7 @@ import java.util.Locale
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CustomDatePickerField(
+fun MyDatePicker(
     label: String,
     selectedDate: Date?,
     onDateSelected: (Date?) -> Unit,

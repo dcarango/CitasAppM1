@@ -32,6 +32,11 @@ class CitaViewModel : ViewModel() {
             currentState.copy(fechaFiltro = fecha)
         }
     }
+    fun onFechaFormularioChanged(fecha: Date?) {
+        _citaState.update { currentState ->
+            currentState.copy(fechaFormulario = fecha)
+        }
+    }
 
     // Funciones negocio
     fun agregarCita() {
@@ -48,26 +53,29 @@ class CitaViewModel : ViewModel() {
             nombre = state.nombre, // el famoso state
             descripcion = state.descripcion // más de lo mismo
         )
-
         // Se añade en la data
         listaCitas.add(nuevaCita)
+    }
 
-        // Limpiamos los campos
-        _citaState.update { currentState ->
-            currentState.copy(
-                listaCitas = listaCitas.toList(), // toLis: cambio de objeto, muestra la nueva cita en el LazyColumn
-                nombre = "",
-                descripcion = "",
-                fechaFormulario = null
-            )
+    fun editarCita(id: Int) {
+        val citaAEditar = buscarCita(id)
+
+
+
+    }
+
+    fun eliminarCita(cita: Cita) {
+        listaCitas.remove(cita)
+    }
+
+    fun buscarCita(id: Int): Cita? {
+        val state = _citaState
+        var citaEncontrada: Cita? = null
+
+        for (cita in state.value.listaCitas) {
+            if (cita.id == id)
+                citaEncontrada = cita
         }
-    }
-
-    fun editarCita() {
-        val state = _citaState.value
-    }
-
-    fun eliminarCita() {
-
+        return citaEncontrada
     }
 }

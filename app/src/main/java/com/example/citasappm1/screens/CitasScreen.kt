@@ -13,7 +13,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AddCircle
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -28,9 +27,8 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.citasappm1.components.CitaCard
-import com.example.citasappm1.components.CustomDatePickerField
+import com.example.citasappm1.components.MyDatePicker
 import com.example.citasappm1.views.CitaViewModel
-import com.iessanalberto.dam2.citasapp.data.listaCitas
 import com.iessanalberto.dam2.citasapp.navigation.AppScreens
 import java.text.SimpleDateFormat
 import java.util.Locale
@@ -82,7 +80,7 @@ fun CitasScreenBodyContent (modifier: Modifier, navController: NavController) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         // DatterPicker
-        CustomDatePickerField(
+        MyDatePicker(
             label = "Filtrar por fecha", // Label de dentro
             selectedDate = citaState.fechaFiltro,
             onDateSelected = { fechaSeleccionada ->
